@@ -39,7 +39,8 @@ private fun RowScope.ExploreTab(modifier: Modifier) {
     NavItem(
         modifier = modifier,
         label = "Explore",
-        icon = Icons.Default.Search
+        icon = Icons.Default.Search,
+        selected = true,
     )
 }
 
