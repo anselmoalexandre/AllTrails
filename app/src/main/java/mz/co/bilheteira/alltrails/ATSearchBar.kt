@@ -53,6 +53,7 @@ internal fun ATSearchBar(modifier: Modifier = Modifier) {
         expanded = false,
         onExpandedChange = {},
         modifier = modifier,
+
     ) {}
 }
 
