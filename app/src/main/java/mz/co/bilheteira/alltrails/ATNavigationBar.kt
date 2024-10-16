@@ -3,10 +3,10 @@ package mz.co.bilheteira.alltrails
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountBox
-import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material.icons.filled.KeyboardArrowUp
-import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Bookmarks
+import androidx.compose.material.icons.filled.Navigation
+import androidx.compose.material.icons.filled.People
+import androidx.compose.material.icons.filled.PermIdentity
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -48,7 +48,7 @@ private fun RowScope.CommunityTab(modifier: Modifier) {
     NavItem(
         modifier = modifier,
         label = "Community",
-        icon = Icons.Default.Person
+        icon = Icons.Default.People
     )
 }
 
@@ -57,7 +57,7 @@ private fun RowScope.NavigateTab(modifier: Modifier) {
     NavItem(
         modifier = modifier,
         label = "Navigate",
-        icon = Icons.Default.KeyboardArrowUp
+        icon = Icons.Default.Navigation
     )
 }
 
@@ -66,7 +66,7 @@ private fun RowScope.SavedTab(modifier: Modifier) {
     NavItem(
         modifier = modifier,
         label = "Saved",
-        icon = Icons.Default.AccountBox
+        icon = Icons.Default.Bookmarks
     )
 }
 
@@ -75,7 +75,7 @@ private fun RowScope.ProfileTab(modifier: Modifier) {
     NavItem(
         modifier = modifier,
         label = "Profile",
-        icon = Icons.Default.AccountCircle
+        icon = Icons.Default.PermIdentity
     )
 }
 
