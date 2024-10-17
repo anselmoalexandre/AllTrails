@@ -30,7 +30,6 @@ internal fun TrailGroupListItem(
 ) {
     Box(
         modifier = modifier
-            .padding(vertical = 16.dp)
             .aspectRatio(1F)
             .clip(RoundedCornerShape(25.dp))
             .fillMaxWidth()
