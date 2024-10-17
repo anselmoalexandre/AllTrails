@@ -3,6 +3,8 @@ package mz.co.bilheteira.alltrails
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -24,7 +26,6 @@ internal fun AllTrailsContent() {
             modifier = Modifier
                 .padding(top = 16.dp)
                 .fillMaxSize(),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             ATSearchBar(
                 modifier = Modifier
@@ -32,18 +33,34 @@ internal fun AllTrailsContent() {
                     .fillMaxWidth()
             )
 
-            FilterButtonRow(modifier = Modifier.fillMaxWidth())
-
-            LazyColumn(
+            FilterButtonRow(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .weight(1F)
-            ) {
-                // This will be filled in the future
-                // with our content list
-            }
+                    .padding(vertical = 16.dp)
+            )
+
+            TrailList()
 
             ATNavigationBar(modifier = Modifier.fillMaxWidth())
+        }
+    }
+}
+
+@Composable
+private fun ColumnScope.TrailList() {
+    LazyColumn(
+        contentPadding = PaddingValues(
+            start = 16.dp,
+            top = 0.dp,
+            end = 16.dp,
+            bottom = 16.dp
+        ),
+        modifier = Modifier
+            .fillMaxWidth()
+            .weight(1F)
+    ) {
+        items(count = 3) {
+            TrailListItem()
         }
     }
 }
