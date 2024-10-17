@@ -13,6 +13,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.pointer.motionEventSpy
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import mz.co.bilheteira.alltrails.ui.theme.AllTrailsTheme
@@ -59,8 +60,12 @@ private fun ColumnScope.TrailList() {
             .fillMaxWidth()
             .weight(1F)
     ) {
-        items(count = 3) {
-            TrailListItem()
+        items(count = 4) { index ->
+            if (index == 1) {
+                TrailGroupListItem()
+            } else {
+                TrailListItem()
+            }
         }
     }
 }
