@@ -164,6 +164,7 @@ private fun TrailImageContainer() {
     Box(
         modifier = Modifier
             .clip(RoundedCornerShape(25.dp))
+            .aspectRatio(1.5F),
     ) {
         TrailImage()
 
@@ -211,8 +212,7 @@ private fun TrailImage() {
         contentDescription = null,
         contentScale = ContentScale.Crop,
         modifier = Modifier
-            .fillMaxWidth()
-            .aspectRatio(1F),
+            .fillMaxWidth(),
     )
 }
 
