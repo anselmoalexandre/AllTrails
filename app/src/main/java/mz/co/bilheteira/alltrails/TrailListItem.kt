@@ -34,6 +34,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -43,6 +44,8 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import mz.co.bilheteira.alltrails.ui.theme.AllTrailsTheme
+import kotlin.math.abs
+import kotlin.math.max
 
 @Composable
 internal fun TrailListItem(
@@ -224,11 +227,16 @@ private fun TrailImages(
     HorizontalPager(
         state = pagerState,
     ) { pageIndex ->
+        val offsetFraction = pagerState.getOffsetDistanceInPages(pageIndex)
+        val alpha = max(0.75F, 1F - abs(offsetFraction))
+
         Image(
             painter = painterResource(id = imageResList[pageIndex]),
             contentDescription = null,
             contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
+                .alpha(alpha)
         )
     }
 }
