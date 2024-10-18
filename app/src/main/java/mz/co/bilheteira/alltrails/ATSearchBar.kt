@@ -2,6 +2,7 @@ package mz.co.bilheteira.alltrails
 
 import android.content.res.Configuration
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
@@ -13,19 +14,40 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SearchBar
 import androidx.compose.material3.SearchBarDefaults
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.delay
 import mz.co.bilheteira.alltrails.ui.theme.AllTrailsTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun ATSearchBar(modifier: Modifier = Modifier) {
+    val searchOptions = listOf("trails", "parks", "cities")
+
+    var typeIndex by remember {
+        mutableIntStateOf(0)
+    }
+
+    LaunchedEffect(Unit) {
+        while (true) {
+            delay(3000)
+
+            typeIndex = (typeIndex + 1) % searchOptions.size
+        }
+    }
+
     SearchBar(
         inputField = {
             SearchBarDefaults.InputField(
-                query = "Find trails",
+                query = "",
                 onQueryChange = {},
                 onSearch = {},
                 expanded = false,
@@ -48,12 +70,23 @@ internal fun ATSearchBar(modifier: Modifier = Modifier) {
                             .padding(5.dp)
                     )
                 },
+                placeholder = {
+                    Row {
+                        Text(
+                            text = "Find"
+                        )
+
+                        ScrollingText(
+                            text = searchOptions[typeIndex],
+                            modifier = Modifier.padding(start = 5.dp)
+                        )
+                    }
+                },
             )
         },
         expanded = false,
         onExpandedChange = {},
         modifier = modifier,
-
     ) {}
 }
 
